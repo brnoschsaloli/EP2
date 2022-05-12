@@ -3887,3 +3887,4 @@ DADOS = {
 }
 dados_normalizados = normaliza(DADOS)
 print(dados_normalizados)
+EARTH_RADIUS = 6371
