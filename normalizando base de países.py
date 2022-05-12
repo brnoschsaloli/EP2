@@ -1,9 +1,6 @@
 def normaliza(dicio):
-    informação = {}
     países = {}
-    for paí in dicio.values():
-        for p,info in paí.items():
-            for tit,n in info.items():
-                informação[tit] = n
+    for país in dicio.values():
+        for p,info in país.items():
             países[p] = info
     return países
