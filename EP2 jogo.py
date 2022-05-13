@@ -3893,16 +3893,26 @@ pais_escolhido = sorteia_pais(dados_normalizados)
 tentativas = 0
 lista_paises = []
 lista  = []
+cores = []
 while tentativas < 20:
     distância = float(inf)
     string = 'Distâncias:\n'
     escolha = input('Gostaria de tentar um país(país), pedir uma dica(dica) ou desistir(desistir)?\n')
     if escolha == 'desistir':
       tentativas += 20
+    if escolha == 'dica':
+      dica = input('Dicas: \n [1] cor da bandeira (custo: 4 tentativas) \n [2] letra da capital (custo: 3 tentativas \n [3] area (custo: 6 tentativas) \n [4] população (custo: 5 tentativas) \n [5] continente (custo: 7 tentativas) \n Escolha uma dica:')
+      if dica == '1': 
+        for p,c in dados_normalizados[pais_escolhido]['bandeira'].items():
+          if c>0:
+            cores.append(p)
+        tentativas+=4
+        print(choice(cores))
     if escolha == 'país':
       guess = input('Digite o nome de um país: ')
       while guess not in dados_normalizados:
         guess = input('Digite o nome de um país: ')
+    
       print('\n')
       lat = 0
       lon = 0
