@@ -71,7 +71,7 @@ def normaliza(dicio):
     for c,país in dicio.items():
         for p,info in país.items():
             países[p] = info
-        info['continente'] = c
+            info['continente'] = c
     return países
 DADOS = {
   "asia": {
@@ -3924,6 +3924,10 @@ while tentativas < 20:
         população = dados_normalizados[pais_escolhido]['populacao']
         tentativas+=5
         print('a população do país é {}'.format(população))
+      if dica == '5':
+        continente = dados_normalizados[pais_escolhido]['continente']
+        tentativas+=7
+        print(continente)
     if escolha == 'pais':
       guess = input('Digite o nome de um país: ')
       while guess not in dados_normalizados:
