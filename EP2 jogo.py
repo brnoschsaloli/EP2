@@ -1,3 +1,4 @@
+from cmath import inf
 from math import sin
 from math import cos
 from math import asin
@@ -3892,27 +3893,32 @@ pais_escolhido = sorteia_pais(dados_normalizados)
 tentativas = 0
 lista_paises = []
 lista  = []
-while tentativas <= 20:
+while tentativas < 20:
+    distância = float(inf)
     string = 'Distâncias:\n'
-    guess = input('Digite o nome de um país: ')
-    while guess not in dados_normalizados:
+    escolha = input('Gostaria de tentar um país(país), pedir uma dica(dica) ou desistir(desistir)?\n')
+    if escolha == 'desistir':
+      tentativas += 20
+    if escolha == 'país':
       guess = input('Digite o nome de um país: ')
-    print('\n')
-    lat = 0
-    lon = 0
-    lat2 = 0
-    lon2 = 0
-    lat = dados_normalizados[guess]['geo']['latitude']
-    lon = dados_normalizados[guess]['geo']['longitude']
-    lat2 = dados_normalizados[pais_escolhido]['geo']['latitude']
-    lon2 = dados_normalizados[pais_escolhido]['geo']['longitude']
-    distância = haversine(EARTH_RADIUS,lat,lon,lat2,lon2)
-    lista = adiciona_em_ordem(guess,distância,lista)
-    for e in lista:
-      string += '{0} ---> {1}\n'.format(e[1],e[0])
-    print(string)
-    if distância == 0:
-      print('PARABÉNS! VOCÊ ACERTOU!')
+      while guess not in dados_normalizados:
+        guess = input('Digite o nome de um país: ')
+      print('\n')
+      lat = 0
+      lon = 0
+      lat2 = 0
+      lon2 = 0
+      lat = dados_normalizados[guess]['geo']['latitude']
+      lon = dados_normalizados[guess]['geo']['longitude']
+      lat2 = dados_normalizados[pais_escolhido]['geo']['latitude']
+      lon2 = dados_normalizados[pais_escolhido]['geo']['longitude']
+      distância = haversine(EARTH_RADIUS,lat,lon,lat2,lon2)
+      lista = adiciona_em_ordem(guess,distância,lista)
+      for e in lista:
+        string += '{0:.2f}km ---> {1}\n'.format(e[1],e[0])
+      print(string)
+      if distância == 0:
+        print('PARABÉNS! VOCÊ ACERTOU!')
     tentativas += 1
 if distância != 0:
   print('VOCÊ PERDEU :(') 
