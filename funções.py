@@ -1,3 +1,70 @@
+from math import sin
+from math import cos
+from math import asin
+from math import radians
+from random import choice
+import random as r
+def haversine(r,sig1,lamb1,sig2,lamb2):
+    sig1 = radians(sig1)
+    sig2 = radians(sig2)
+    lamb1 = radians(lamb1)
+    lamb2 = radians(lamb2)
+    diam = 2*r
+    lambs = (sin((lamb2 - lamb1)/2))**2
+    sigs = (sin((sig2 - sig1)/2))**2
+    coss = cos(sig1)*cos(sig2)
+    raiz = ((sigs) + (coss)*(lambs))**(0.5)
+    d = 2*r*(asin(raiz))
+    return d
+def adiciona_em_ordem(pais,distancia,lista):
+    nova_lista = [pais,distancia]
+    copia = []
+    if pais in lista:
+        return lista
+    x = 0
+    i = 0
+    while i < len(lista):
+        if nova_lista[1] < lista[i][1] and x == 0:
+            copia.append(nova_lista)
+            x = 1
+        else:
+            copia.append(lista[i])
+            i += 1
+    if x == 0:
+        copia.append(nova_lista)
+    return copia
+def sorteia_letra(palavra,lista):
+    especiais =['.', ',', '-', ';', ' ']
+    x = r.choice(palavra)
+    y = 0
+    mai = [z.upper() for z in lista]
+    minu = [w.lower() for w in lista]
+    for e in palavra:
+        if e not in especiais and e not in lista and e not in mai and e not in minu:
+            y = 1
+    if y == 0:
+        return ''
+
+    while x in especiais or x in lista or x in mai or x in minu:
+        x = r.choice(palavra)
+        
+    return x
+def sorteia_pais(dic):
+    países = []
+    for país in dic.keys():
+        países.append(país)
+    sorteado = choice(países)
+    return sorteado
+def esta_na_lista(pais,lista):
+    x = 0
+    for e in lista:
+        if pais in e[0]:
+            x = 1
+    if x == 1:
+        return True
+    
+    if x == 0:
+        return False
 def normaliza(dicio):
     países = {}
     for país in dicio.values():
@@ -3820,3 +3887,4 @@ DADOS = {
 }
 dados_normalizados = normaliza(DADOS)
 print(dados_normalizados)
+EARTH_RADIUS = 6371
