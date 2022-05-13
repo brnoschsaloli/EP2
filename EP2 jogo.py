@@ -3908,12 +3908,16 @@ while tentativas < 20:
           if c>0:
             cores.append(p)
         tentativas+=4
-        print(choice(cores))
+        print('uma das cores da bandeira é {}'.format(choice(cores)))
       if dica == '2':
         letra_sorteada = sorteia_letra(dados_normalizados[pais_escolhido]['capital'],lista_restrita)
         lista_restrita.append(letra_sorteada)
         tentativas+=3
-        print(letra_sorteada)
+        print('uma das letras da capital é {}'.format(letra_sorteada))
+      if dica == '3':
+        area = dados_normalizados[pais_escolhido]['area']
+        tentativas+=6
+        print('a área é {} km'.format(area))
     if escolha == 'pais':
       guess = input('Digite o nome de um país: ')
       while guess not in dados_normalizados:
