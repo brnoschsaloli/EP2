@@ -3927,7 +3927,7 @@ while tentativas < 20:
       if dica == '5':
         continente = dados_normalizados[pais_escolhido]['continente']
         tentativas+=7
-        print(continente)
+        print('o continente do país é {}'.format(continente))
     if escolha == 'pais':
       guess = input('Digite o nome de um país: ')
       while guess not in dados_normalizados:
