@@ -3955,8 +3955,9 @@ while tentativas < 20:
         if distância>=5000:
           string += '\033[36m'+'{0:.2f}km ---> {1}\n'.format(e[1],e[0])+'\033[0;0m'
       print(string)
+      tentativas += 1
+      print('você tem {} tentativas'.format(20 - tentativas))
       if distância == 0:
         print('PARABÉNS! VOCÊ ACERTOU!')
-    tentativas += 1
 if distância != 0:
   print('VOCÊ PERDEU :(, o país era {}'.format(pais_escolhido)) 
