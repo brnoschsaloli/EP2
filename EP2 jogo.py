@@ -335,7 +335,7 @@ DADOS = {
         "outras": 3
       }
     },
-    "cingapura": {
+    "singapura": {
       "area": 719,
       "populacao": 5703569,
       "capital": "Singapore",
@@ -3949,7 +3949,7 @@ while tentativas < 20:
       lista = adiciona_em_ordem(guess,distância,lista)
       for e in lista:
         if distância<1000:
-          string += '\033[31m'+'{0:.2f}km ---> {1}\n'.format(e[1],e[0])+'\033[0;0m'
+          string += ('\033[31m'+'{0:.2f}km ---> {1}\n'.format(e[1],e[0])+'\033[0;0m')
         if distância>=1000 and distância<5000:
          string += '\033[33m'+'{0:.2f}km ---> {1}\n'.format(e[1],e[0])+'\033[0;0m'
         if distância>=5000:
