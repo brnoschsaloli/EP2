@@ -3906,7 +3906,8 @@ while tentativas < 20:
       if dica == '1': 
         for p,c in dados_normalizados[pais_escolhido]['bandeira'].items():
           if c>0:
-            cores.append(p)
+            if p!= 'outras':
+              cores.append(p)
         tentativas+=4
         print('uma das cores da bandeira é {}'.format(choice(cores)))
       if dica == '2':
@@ -3918,6 +3919,10 @@ while tentativas < 20:
         area = dados_normalizados[pais_escolhido]['area']
         tentativas+=6
         print('a área é {} km'.format(area))
+      if dica == '4':
+        população = dados_normalizados[pais_escolhido]['populacao']
+        tentativas+=5
+        print('a população do país é {}'.format(população))
     if escolha == 'pais':
       guess = input('Digite o nome de um país: ')
       while guess not in dados_normalizados:
