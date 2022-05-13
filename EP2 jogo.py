@@ -3902,7 +3902,7 @@ while tentativas < 20:
     if escolha == 'desistir':
       tentativas += 20
     if escolha == 'dica':
-      dica = input('Dicas: \n [1] cor da bandeira (custo: 4 tentativas) \n [2] letra da capital (custo: 3 tentativas \n [3] area (custo: 6 tentativas) \n [4] população (custo: 5 tentativas) \n [5] continente (custo: 7 tentativas) \n Escolha uma dica:')
+      dica = input('Dicas: \n [1] cor da bandeira (custo: 4 tentativas) \n [2] letra da capital (custo: 3 tentativas \n [3] area (custo: 6 tentativas) \n [4] população (custo: 5 tentativas) \n [5] continente (custo: 7 tentativas) \n Escolha uma dica: ')
       if dica == '1': 
         for p,c in dados_normalizados[pais_escolhido]['bandeira'].items():
           if c>0:
@@ -3959,5 +3959,6 @@ while tentativas < 20:
       print('você tem {} tentativas'.format(20 - tentativas))
       if distância == 0:
         print('PARABÉNS! VOCÊ ACERTOU!')
+        tentativas += 20
 if distância != 0:
   print('VOCÊ PERDEU :(, o país era {}'.format(pais_escolhido)) 
