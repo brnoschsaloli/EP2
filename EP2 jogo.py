@@ -68,9 +68,10 @@ def esta_na_lista(pais,lista):
         return False
 def normaliza(dicio):
     países = {}
-    for país in dicio.values():
+    for c,país in dicio.items():
         for p,info in país.items():
             países[p] = info
+        info['continente'] = c
     return países
 DADOS = {
   "asia": {
@@ -3888,7 +3889,7 @@ DADOS = {
 }
 dados_normalizados = normaliza(DADOS)
 EARTH_RADIUS = 6371
-
+print(dados_normalizados)
 pais_escolhido = sorteia_pais(dados_normalizados)
 tentativas = 0
 lista_paises = []
