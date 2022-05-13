@@ -3886,10 +3886,21 @@ DADOS = {
   }
 }
 dados_normalizados = normaliza(DADOS)
-print(dados_normalizados)
 EARTH_RADIUS = 6371
 
+pais_escolhido = sorteia_pais(dados_normalizados)
 tentativas = 0
 while tentativas <= 20:
     guess = input('Digite o nome de um país: ')
+    lat = 0
+    lon = 0
+    lat2 = 0
+    lon2 = 0
+    lat = dados_normalizados[guess]['geo']['latitude']
+    lon = dados_normalizados[guess]['geo']['longitude']
+    lat2 = dados_normalizados[pais_escolhido]['geo']['latitude']
+    lon2 = dados_normalizados[pais_escolhido]['geo']['longitude']
+    distância = haversine(EARTH_RADIUS,lat,lon,lat2,lon2)
+    print(distância)
+
     tentativas += 1
