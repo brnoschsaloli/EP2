@@ -3948,10 +3948,15 @@ while tentativas < 20:
       distância = haversine(EARTH_RADIUS,lat,lon,lat2,lon2)
       lista = adiciona_em_ordem(guess,distância,lista)
       for e in lista:
-        string += '{0:.2f}km ---> {1}\n'.format(e[1],e[0])
+        if distância<1000:
+          string += '\033[31m'+'{0:.2f}km ---> {1}\n'.format(e[1],e[0])+'\033[0;0m'
+        if distância>=1000 and distância<5000:
+         string += '\033[33m'+'{0:.2f}km ---> {1}\n'.format(e[1],e[0])+'\033[0;0m'
+        if distância>=5000:
+          string += '\033[36m'+'{0:.2f}km ---> {1}\n'.format(e[1],e[0])+'\033[0;0m'
       print(string)
       if distância == 0:
         print('PARABÉNS! VOCÊ ACERTOU!')
     tentativas += 1
 if distância != 0:
-  print('VOCÊ PERDEU :(') 
+  print('VOCÊ PERDEU :(, o país era {}'.format(pais_escolhido)) 
