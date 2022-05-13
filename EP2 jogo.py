@@ -3898,11 +3898,11 @@ lista_restrita = []
 while tentativas < 20:
     distância = float(inf)
     string = 'Distâncias:\n'
-    escolha = input('Gostaria de tentar um país(pais), pedir uma dica(dica) ou desistir(desistir)?\n')
+    escolha = input('Gostaria de tentar um país (pais), pedir uma dica (dica) ou desistir (desistir)?\n')
     if escolha == 'desistir':
       tentativas += 20
     if escolha == 'dica':
-      dica = input('Dicas: \n [1] cor da bandeira (custo: 4 tentativas) \n [2] letra da capital (custo: 3 tentativas \n [3] area (custo: 6 tentativas) \n [4] população (custo: 5 tentativas) \n [5] continente (custo: 7 tentativas) \n Escolha uma dica: ')
+      dica = input(' Seu saldo é {}. \n Mercado de dicas: \n [1] cor da bandeira (custo: 4 tentativas) \n [2] letra da capital (custo: 3 tentativas \n [3] area (custo: 6 tentativas) \n [4] população (custo: 5 tentativas) \n [5] continente (custo: 7 tentativas) \n Voltar? \n Escolha sua opção (1,2,3,4,5,v): '.format(20 - tentativas))
       if dica == '1': 
         for p,c in dados_normalizados[pais_escolhido]['bandeira'].items():
           if c>0:
