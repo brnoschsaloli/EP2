@@ -3890,8 +3890,14 @@ EARTH_RADIUS = 6371
 
 pais_escolhido = sorteia_pais(dados_normalizados)
 tentativas = 0
+lista_paises = []
+lista  = []
 while tentativas <= 20:
+    string = 'Distâncias:\n'
     guess = input('Digite o nome de um país: ')
+    while guess not in dados_normalizados:
+      guess = input('Digite o nome de um país: ')
+    print('\n')
     lat = 0
     lon = 0
     lat2 = 0
@@ -3901,7 +3907,12 @@ while tentativas <= 20:
     lat2 = dados_normalizados[pais_escolhido]['geo']['latitude']
     lon2 = dados_normalizados[pais_escolhido]['geo']['longitude']
     distância = haversine(EARTH_RADIUS,lat,lon,lat2,lon2)
-    print(distância)
+    lista = adiciona_em_ordem(guess,distância,lista)
+    for e in lista:
+      string += '{0} ---> {1}\n'.format(e[1],e[0])
+    print(string)
     if distância == 0:
       print('PARABÉNS! VOCÊ ACERTOU!')
     tentativas += 1
+if distância != 0:
+  print('VOCÊ PERDEU :(') 
