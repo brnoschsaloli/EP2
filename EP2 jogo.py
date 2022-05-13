@@ -3889,7 +3889,6 @@ DADOS = {
 }
 dados_normalizados = normaliza(DADOS)
 EARTH_RADIUS = 6371
-print(dados_normalizados)
 pais_escolhido = sorteia_pais(dados_normalizados)
 tentativas = 0
 lista_paises = []
@@ -3931,6 +3930,10 @@ while tentativas < 20:
     if escolha == 'pais':
       guess = input('Digite o nome de um país: ')
       while guess not in dados_normalizados:
+        guess = input('Digite o nome de um país: ')
+      while esta_na_lista(guess,lista) == True:
+        print('\n')
+        print('Você ja tentou este país\n')
         guess = input('Digite o nome de um país: ')
     
       print('\n')
