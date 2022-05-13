@@ -3902,5 +3902,6 @@ while tentativas <= 20:
     lon2 = dados_normalizados[pais_escolhido]['geo']['longitude']
     distância = haversine(EARTH_RADIUS,lat,lon,lat2,lon2)
     print(distância)
-
+    if distância == 0:
+      print('PARABÉNS! VOCÊ ACERTOU!')
     tentativas += 1
